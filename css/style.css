@@ -1,0 +1,1719 @@
+/* ==========================================================================
+   ROAR DOORS - Old Money Quiet Luxury Design System
+   Brand: ROAR DOORS | "Crafted Timber. Lasting Legacy."
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   01. CSS Custom Properties / Color System
+   -------------------------------------------------------------------------- */
+:root {
+  /* Primary Foundations (Old Money Pastel & Warm Tones) */
+  --bg-primary: #FAF6EE;          /* Warm Ivory / Cream */
+  --bg-secondary: #F4EFE6;        /* Subtly deeper cream / linen */
+  --bg-card: #FCFAF4;             /* Pure soft ivory card surface */
+  --bg-elevated: #FFFDF9;         /* Floating elevation */
+  
+  /* Secondary Harmonic Surfaces */
+  --surface-sage: #C9D3C0;        /* Soft Sage Green */
+  --surface-sage-light: rgba(201, 211, 192, 0.22);
+  --surface-sage-tint: rgba(201, 211, 192, 0.12);
+  
+  --surface-blue: #CBD5DB;        /* Dusty Powder Blue */
+  --surface-blue-light: rgba(203, 213, 219, 0.25);
+  
+  --surface-champagne: #EADFC8;   /* Pale Champagne */
+  --surface-champagne-light: rgba(234, 223, 200, 0.35);
+  
+  --accent-blush: #E3CFC6;        /* Muted Blush / Dusty Rose */
+  --accent-blush-light: rgba(227, 207, 198, 0.28);
+  
+  /* Text & Deep Elements */
+  --text-primary: #3B2A20;        /* Deep Walnut Brown */
+  --text-secondary: #5C473A;      /* Muted Walnut / Sepia */
+  --text-muted: #846F60;          /* Soft Timber Taupe */
+  --text-light: #A49386;          /* Muted Label Gray-Brown */
+  
+  /* Metallic Antique Brass / Gold Details */
+  --brass-gold: #A88B52;          /* Antique Brass / Gold */
+  --brass-gold-hover: #917540;    /* Aged Deep Brass */
+  --brass-gold-light: rgba(168, 139, 82, 0.15);
+  --brass-hairline: rgba(168, 139, 82, 0.32);
+  --brass-hairline-light: rgba(168, 139, 82, 0.18);
+  --border-subtle: rgba(59, 42, 32, 0.10);
+  --border-strong: rgba(59, 42, 32, 0.22);
+
+  /* Shadows (Soft, Diffuse, Ambient) */
+  --shadow-sm: 0 2px 8px rgba(59, 42, 32, 0.04);
+  --shadow-md: 0 8px 24px rgba(59, 42, 32, 0.06);
+  --shadow-lg: 0 16px 40px rgba(59, 42, 32, 0.08);
+  --shadow-brass: 0 6px 20px rgba(168, 139, 82, 0.20);
+
+  /* Typography */
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.22s cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-smooth: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container-max: 1320px;
+  --header-height: 88px;
+  --radius-subtle: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   02. CSS Reset & Base Rules
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle organic grain overlay across the entire site */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   03. Typography & Hierarchy
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2.0rem, 3.8vw, 3.2rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Small uppercase luxury labels */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--brass-gold);
+  margin-bottom: 0.85rem;
+}
+
+.eyebrow::before,
+.eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--brass-hairline);
+}
+
+.eyebrow.no-after::after {
+  display: none;
+}
+
+.eyebrow.no-before::before {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   04. Layout & Containers
+   -------------------------------------------------------------------------- */
+.container {
+  width: 90%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.section-padding {
+  padding-block: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.section-header h2 {
+  margin-bottom: 1.1rem;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* Brass divider hairline */
+.brass-divider {
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brass-gold), transparent);
+  margin: 1.4rem auto;
+}
+
+/* --------------------------------------------------------------------------
+   05. Buttons & Action Links
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 2.2rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  cursor: pointer;
+  border-radius: var(--radius-subtle);
+  transition: all var(--transition-fast);
+  position: relative;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+/* Primary Brass Solid Button */
+.btn-brass {
+  background-color: var(--brass-gold);
+  color: #FAF6EE;
+  border-color: var(--brass-gold);
+}
+
+.btn-brass:hover {
+  background-color: var(--brass-gold-hover);
+  border-color: var(--brass-gold-hover);
+  box-shadow: var(--shadow-brass);
+  transform: translateY(-1px);
+  color: #FFFFFF;
+}
+
+/* Outline Walnut / Brass Button */
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--brass-hairline);
+}
+
+.btn-outline:hover {
+  background-color: var(--surface-champagne-light);
+  border-color: var(--brass-gold);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+/* Soft Sage or Blush Pill Button */
+.btn-sage {
+  background-color: var(--surface-sage-light);
+  color: var(--text-primary);
+  border-color: rgba(201, 211, 192, 0.4);
+}
+
+.btn-sage:hover {
+  background-color: var(--surface-sage);
+  border-color: var(--surface-sage);
+  transform: translateY(-1px);
+}
+
+/* Underline Text Link (Old Money Editorial) */
+.link-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-primary);
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.link-editorial::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--brass-gold);
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  transform-origin: right;
+}
+
+.link-editorial:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  background-color: var(--brass-gold-hover);
+}
+
+.link-editorial svg {
+  transition: transform var(--transition-fast);
+}
+
+.link-editorial:hover svg {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   06. Minimal Sticky Header & Navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(250, 246, 238, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--brass-hairline-light);
+  transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.site-header.scrolled {
+  background-color: rgba(250, 246, 238, 0.98);
+  box-shadow: 0 4px 20px rgba(59, 42, 32, 0.05);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+/* Wordmark & Emblem */
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-emblem {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--brass-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-card);
+  position: relative;
+  border-radius: var(--radius-subtle);
+  transition: border-color var(--transition-fast);
+}
+
+.brand-emblem svg {
+  width: 22px;
+  height: 28px;
+  fill: var(--text-primary);
+}
+
+.brand-mark:hover .brand-emblem {
+  border-color: var(--brass-gold);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.brand-sub {
+  font-size: 0.62rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Desktop Navigation */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.nav-link {
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  position: relative;
+  padding-block: 0.5rem;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--brass-gold);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.mobile-toggle svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* --------------------------------------------------------------------------
+   07. Full-Screen Hero Section (Home Page)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  filter: brightness(0.92) contrast(0.96);
+  transform: scale(1.02);
+  transition: transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-section:hover .hero-background img {
+  transform: scale(1.05);
+}
+
+/* Subtle warm gradient scrim for legibility */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    rgba(250, 246, 238, 0.94) 0%,
+    rgba(250, 246, 238, 0.82) 42%,
+    rgba(250, 246, 238, 0.35) 75%,
+    rgba(250, 246, 238, 0.15) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 680px;
+  padding-block: 4rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--text-primary);
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.015em;
+}
+
+.hero-tagline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.hero-lead {
+  font-size: 1.18rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 2.4rem;
+  max-width: 540px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 3.5rem;
+}
+
+.hero-specs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 1.6rem;
+  background-color: rgba(252, 250, 244, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--brass-hairline-light);
+  border-radius: var(--radius-subtle);
+}
+
+.hero-spec-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-spec-item strong {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hero-spec-item span {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   08. Brand Intro Strip (Craftsmanship & Heritage)
+   -------------------------------------------------------------------------- */
+.brand-intro-section {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--brass-hairline-light);
+}
+
+.brand-intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.brand-intro-text h2 {
+  margin-bottom: 1.4rem;
+}
+
+.brand-intro-text p {
+  margin-bottom: 1.4rem;
+  font-size: 1.1rem;
+}
+
+.brand-intro-quote {
+  padding-left: 1.8rem;
+  border-left: 2px solid var(--brass-gold);
+  margin-block: 2rem;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.brand-intro-media {
+  position: relative;
+}
+
+.brand-intro-media .frame-outer {
+  border: 1px solid var(--brass-hairline);
+  padding: 12px;
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-md);
+}
+
+.brand-intro-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.brand-intro-media:hover img {
+  transform: scale(1.02);
+}
+
+.intro-badge-overlay {
+  position: absolute;
+  bottom: -24px;
+  right: -20px;
+  background-color: var(--surface-champagne);
+  border: 1px solid var(--brass-gold);
+  padding: 1.2rem 1.6rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.intro-badge-overlay strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.intro-badge-overlay span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   09. "Our Collections" Category Cards (7 Categories)
+   -------------------------------------------------------------------------- */
+.collections-section {
+  background-color: var(--bg-secondary);
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.8rem;
+}
+
+/* Asymmetric luxury rhythm */
+.col-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline-light);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.col-card:hover {
+  border-color: var(--brass-gold);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.col-card-large {
+  grid-column: span 6;
+}
+
+.col-card-medium {
+  grid-column: span 4;
+}
+
+.col-card-wide {
+  grid-column: span 6;
+}
+
+.col-card-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background-color: var(--surface-champagne-light);
+}
+
+.col-card-large .col-card-media {
+  aspect-ratio: 16 / 9;
+}
+
+.col-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.col-card:hover .col-card-media img {
+  transform: scale(1.06);
+}
+
+.col-card-grade-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: rgba(250, 246, 238, 0.92);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--brass-hairline);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  border-radius: var(--radius-subtle);
+}
+
+.col-card-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.col-card-body h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.45rem;
+  color: var(--text-primary);
+}
+
+.col-card-tagline {
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--brass-gold);
+  margin-bottom: 0.8rem;
+}
+
+.col-card-body p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
+  flex-grow: 1;
+}
+
+.col-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   10. "Why ROAR DOORS" Four Pillars Section
+   -------------------------------------------------------------------------- */
+.why-section {
+  background-color: var(--bg-primary);
+  position: relative;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.pillar-card {
+  padding: 2.4rem 1.8rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline-light);
+  border-radius: var(--radius-subtle);
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.pillar-card:hover {
+  border-color: var(--brass-gold);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  background-color: var(--bg-elevated);
+}
+
+.pillar-icon-box {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 1.6rem;
+  border: 1px solid var(--brass-hairline);
+  background-color: var(--surface-champagne-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brass-gold);
+  border-radius: var(--radius-subtle);
+  transition: all var(--transition-fast);
+}
+
+.pillar-card:hover .pillar-icon-box {
+  background-color: var(--brass-gold);
+  color: #FAF6EE;
+  border-color: var(--brass-gold);
+}
+
+.pillar-icon-box svg {
+  width: 28px;
+  height: 28px;
+}
+
+.pillar-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.pillar-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* --------------------------------------------------------------------------
+   11. Featured Products Showcase Strip
+   -------------------------------------------------------------------------- */
+.featured-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--brass-hairline-light);
+  border-bottom: 1px solid var(--brass-hairline-light);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.product-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline-light);
+  border-radius: var(--radius-subtle);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  border-color: var(--brass-gold);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.product-card-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--surface-champagne-light);
+}
+
+.product-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.product-card:hover .product-card-media img {
+  transform: scale(1.05);
+}
+
+.product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: rgba(250, 246, 238, 0.94);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--brass-hairline);
+  padding: 0.3rem 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--brass-gold);
+}
+
+.product-card-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-card-category {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.product-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
+}
+
+.product-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.product-specs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.spec-chip {
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  background-color: var(--surface-champagne-light);
+  border: 1px solid var(--brass-hairline-light);
+  color: var(--text-secondary);
+  border-radius: var(--radius-subtle);
+}
+
+.product-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   12. Testimonials Section (Architects & Designers)
+   -------------------------------------------------------------------------- */
+.testimonials-section {
+  background-color: var(--bg-primary);
+  position: relative;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  padding: 2.6rem 2.2rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline-light);
+  border-radius: var(--radius-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.testimonial-card:hover {
+  border-color: var(--brass-gold);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.testimonial-quote-mark {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--brass-hairline);
+  margin-bottom: 0.5rem;
+}
+
+.testimonial-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.testimonial-author span {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--brass-gold);
+  margin-bottom: 2px;
+}
+
+.testimonial-author small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   13. Call-To-Action Banner: "Build with Confidence"
+   -------------------------------------------------------------------------- */
+.cta-banner-section {
+  position: relative;
+  background-color: #2F2119; /* Warm deep walnut timber */
+  color: #FAF6EE;
+  overflow: hidden;
+  padding-block: clamp(5rem, 8vw, 7.5rem);
+}
+
+.cta-banner-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  mix-blend-mode: luminosity;
+}
+
+.cta-banner-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-banner-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.cta-banner-content h2 {
+  color: #FAF6EE;
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  margin-bottom: 1.2rem;
+}
+
+.cta-banner-content p {
+  color: #D6C8BC;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 2.6rem;
+}
+
+.cta-banner-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+.btn-brass-light {
+  background-color: var(--brass-gold);
+  color: #FAF6EE;
+  border-color: var(--brass-gold);
+}
+
+.btn-brass-light:hover {
+  background-color: #C4A76E;
+  color: #2F2119;
+  border-color: #C4A76E;
+}
+
+.btn-outline-white {
+  border-color: rgba(250, 246, 238, 0.35);
+  color: #FAF6EE;
+}
+
+.btn-outline-white:hover {
+  background-color: rgba(250, 246, 238, 0.1);
+  border-color: #FAF6EE;
+  color: #FAF6EE;
+}
+
+/* --------------------------------------------------------------------------
+   14. Luxury Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: #281B14; /* Deepest timber walnut */
+  color: #D6C8BC;
+  border-top: 1px solid rgba(168, 139, 82, 0.25);
+  padding-top: clamp(4.5rem, 7vw, 6rem);
+  padding-bottom: 2.5rem;
+  font-size: 0.9rem;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 4rem;
+}
+
+.footer-brand .brand-title {
+  color: #FAF6EE;
+  font-size: 1.65rem;
+}
+
+.footer-brand .brand-sub {
+  color: #A88B52;
+}
+
+.footer-brand-desc {
+  color: #B5A192;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-top: 1.2rem;
+  margin-bottom: 1.8rem;
+  max-width: 340px;
+}
+
+.footer-certifications {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.cert-pill {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(168, 139, 82, 0.35);
+  color: #C4A76E;
+  border-radius: var(--radius-subtle);
+}
+
+.footer-col h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: #FAF6EE;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.footer-col h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 28px;
+  height: 1px;
+  background-color: var(--brass-gold);
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #B5A192;
+  font-size: 0.88rem;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: #FAF6EE;
+  padding-left: 4px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+  color: #B5A192;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.footer-contact-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--brass-gold);
+}
+
+.footer-contact-item a {
+  color: #B5A192;
+}
+
+.footer-contact-item a:hover {
+  color: #FAF6EE;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid rgba(168, 139, 82, 0.18);
+  font-size: 0.78rem;
+  color: #968374;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-social-link {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(168, 139, 82, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D6C8BC;
+  border-radius: var(--radius-subtle);
+  transition: all var(--transition-fast);
+}
+
+.footer-social-link:hover {
+  border-color: var(--brass-gold);
+  color: #FAF6EE;
+  background-color: rgba(168, 139, 82, 0.15);
+  transform: translateY(-2px);
+}
+
+.footer-social-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   15. Floating WhatsApp Concierge Button
+   -------------------------------------------------------------------------- */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-gold);
+  padding: 0.55rem 1.1rem 0.55rem 0.65rem;
+  border-radius: 40px;
+  box-shadow: 0 8px 28px rgba(59, 42, 32, 0.18);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(59, 42, 32, 0.25);
+  background-color: #FAF6EE;
+}
+
+.whatsapp-icon-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #4A6B53; /* Deep sage/forest green (refined old-money, not neon) */
+  color: #FAF6EE;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color var(--transition-fast);
+}
+
+.floating-whatsapp:hover .whatsapp-icon-circle {
+  background-color: #38533F;
+}
+
+.whatsapp-icon-circle svg {
+  width: 20px;
+  height: 20px;
+  fill: #FAF6EE;
+}
+
+.whatsapp-pulse-dot {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--brass-gold);
+  border: 2px solid var(--bg-card);
+  border-radius: 50%;
+}
+
+.whatsapp-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.whatsapp-text-title {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.whatsapp-text-status {
+  font-size: 0.62rem;
+  color: #4A6B53;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   16. Accessible Native <dialog> Modal for Quotes & Samples
+   -------------------------------------------------------------------------- */
+dialog.quote-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  opacity: 0;
+  border: 1px solid var(--brass-gold);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 0;
+  max-width: 620px;
+  width: 92%;
+  border-radius: var(--radius-subtle);
+  box-shadow: 0 24px 60px rgba(59, 42, 32, 0.35);
+  z-index: 2000;
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+dialog.quote-dialog[open] {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+dialog.quote-dialog::backdrop {
+  background-color: rgba(59, 42, 32, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.dialog-inner {
+  padding: clamp(2rem, 4vw, 3rem);
+  max-height: 88vh;
+  overflow-y: auto;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--brass-hairline-light);
+}
+
+.dialog-header h3 {
+  font-size: 1.85rem;
+  color: var(--text-primary);
+}
+
+.dialog-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 1;
+  padding: 0.2rem;
+  transition: color var(--transition-fast);
+}
+
+.dialog-close-btn:hover {
+  color: var(--text-primary);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  border-radius: var(--radius-subtle);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--brass-gold);
+  box-shadow: 0 0 0 3px rgba(168, 139, 82, 0.15);
+  background-color: #FFFFFF;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+/* Toast Alerts */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 2500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  pointer-events: none;
+}
+
+.toast-msg {
+  pointer-events: auto;
+  background-color: var(--text-primary);
+  color: #FAF6EE;
+  border: 1px solid var(--brass-gold);
+  padding: 0.85rem 1.4rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-subtle);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: slideToast 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideToast {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Authorized Brand Partners Bar & Udaipur Legacy Badges
+   ========================================================================== */
+.brand-partners-strip {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--brass-hairline);
+  border-bottom: 1px solid var(--brass-hairline);
+  padding: 2.2rem 0;
+  position: relative;
+  z-index: 5;
+}
+
+.brand-partners-header {
+  text-align: center;
+  margin-bottom: 1.4rem;
+}
+
+.brand-partners-header .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.brand-partners-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.partners-badge-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.partner-badge-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline-light);
+  padding: 1.1rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-width: 190px;
+  flex: 1 1 200px;
+  max-width: 260px;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.partner-badge-card:hover {
+  border-color: var(--brass-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.partner-badge-card .partner-role {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brass-gold);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: var(--brass-gold-light);
+  border-radius: 1px;
+}
+
+.partner-badge-card .partner-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 0.25rem;
+}
+
+.partner-badge-card .partner-cat {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Dealership Showcase Grid on About page */
+.dealership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2.5rem;
+}
+
+.dealership-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline);
+  padding: 2.2rem 1.8rem;
+  position: relative;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.dealership-card:hover {
+  border-color: var(--brass-gold);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.dealership-badge-pill {
+  align-self: flex-start;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 10px;
+  background-color: var(--brass-gold-light);
+  color: var(--brass-gold);
+  border: 1px solid var(--brass-hairline);
+  margin-bottom: 1.2rem;
+}
+
+.dealership-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+
+.dealership-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+}
+
+.dealership-card-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dealership-card-meta svg {
+  color: var(--brass-gold);
+  flex-shrink: 0;
+}
+
+/* Legacy trust banner / pill */
+.legacy-trust-box {
+  background-color: var(--bg-card);
+  border: 1px solid var(--brass-hairline);
+  padding: 1.6rem 2rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.legacy-trust-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--brass-gold-light);
+  border: 1px solid var(--brass-hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--brass-gold);
+}
+
+.legacy-trust-text strong {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.legacy-trust-text p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .partner-badge-card {
+    min-width: 140px;
+    flex: 1 1 140px;
+    padding: 0.9rem 1rem;
+  }
+  .legacy-trust-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.4rem;
+  }
+}
+

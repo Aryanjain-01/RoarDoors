@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Personal / Local files
+*.pdf
+*alias*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.log
