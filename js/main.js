@@ -68,10 +68,6 @@
   // -------------------------------------------------------------------------
   function initQuoteModal() {
     const dialog = document.getElementById("quote-dialog");
-    const openBtns = document.querySelectorAll("[data-open-quote-modal]");
-    const closeBtns = document.querySelectorAll("[data-close-quote-modal]");
-    const productSelect = document.getElementById("quote-product-select");
-
     if (!dialog) return;
 
     window.ROAR.openQuoteModal = function (preselectedProduct) {
@@ -82,8 +78,11 @@
       }
       document.body.style.overflow = "hidden";
 
-      if (preselectedProduct && productSelect) {
-        productSelect.value = preselectedProduct;
+      const productInput = dialog.querySelector("#dlg-product") || 
+                           dialog.querySelector("[name='product']") || 
+                           dialog.querySelector("#quote-product-select");
+      if (preselectedProduct && productInput) {
+        productInput.value = preselectedProduct;
       }
     };
 
@@ -96,19 +95,21 @@
       document.body.style.overflow = "";
     };
 
-    openBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+    // Delegated click handler for opening modal (works with dynamic buttons)
+    document.addEventListener("click", (e) => {
+      const openBtn = e.target.closest("[data-open-quote-modal]");
+      if (openBtn) {
         e.preventDefault();
-        const productName = btn.getAttribute("data-product") || "";
+        const productName = openBtn.getAttribute("data-quote-product") || openBtn.getAttribute("data-product") || "";
         window.ROAR.openQuoteModal(productName);
-      });
-    });
+        return;
+      }
 
-    closeBtns.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
+      const closeBtn = e.target.closest("[data-close-quote-modal]") || e.target.closest("#dialog-close-btn");
+      if (closeBtn) {
         e.preventDefault();
         window.ROAR.closeQuoteModal();
-      });
+      }
     });
 
     // Close on click backdrop
@@ -125,14 +126,15 @@
       }
     });
 
-    // Handle form submit in modal
-    const modalForm = document.getElementById("quote-modal-form");
+    // Handle form submit in modal (supports both #quote-modal-form and #dialog-quote-form)
+    const modalForm = document.getElementById("quote-modal-form") || document.getElementById("dialog-quote-form");
     if (modalForm) {
       modalForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const name = modalForm.querySelector("[name='name']").value;
-        const phone = modalForm.querySelector("[name='phone']").value;
-        const product = modalForm.querySelector("[name='product']").value;
+        const nameInput = modalForm.querySelector("[name='name']");
+        const productInput = modalForm.querySelector("[name='product']");
+        const name = nameInput ? nameInput.value : "Valued Architect";
+        const product = productInput ? productInput.value : "ROAR Timber";
 
         window.ROAR.closeQuoteModal();
         modalForm.reset();

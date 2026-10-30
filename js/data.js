@@ -22,37 +22,294 @@ const ROAR_DATA = {
     consultationHours: "Architectural Studio & Showroom Consultations by Appointment",
     authorizedDealerships: [
       {
-        name: "Euro Pratik",
-        badge: "Authorized Dealer",
-        tagline: "India’s Premier Architectural Louvers, Wall Panels & Designer Surfaces",
+        id: "roar-commercial",
+        name: "ROAR Commercial",
+        badge: "Proprietary Line",
+        tagline: "Avant-Garde Architectural Louvers, Acoustic Wall Panels & Commercial Surfaces",
         category: "Wall Panels, Fluted Louvers & Acrylics"
       },
       {
-        name: "Shiv Shakti Laminates",
-        badge: "Authorized Dealer",
-        tagline: "Architectural Surface Finishes & High-Pressure Decorative Laminates",
+        id: "roar-decor",
+        name: "ROAR Decor",
+        badge: "Proprietary Line",
+        tagline: "Architectural Surface Finishes, High-Pressure Decorative Laminates & Mattes",
         category: "Designer Decorative Laminates"
       },
       {
+        id: "greenply",
         name: "Greenply",
-        badge: "Official Premium Partner",
+        badge: "Official Stockist",
         tagline: "India’s Foremost Certified Structural & Marine Grade Plywood",
         category: "IS:710 Marine & IS:303 Calibrated Plywood"
       },
       {
+        id: "keto-ply",
         name: "Keto Ply",
-        badge: "Official Premium Partner",
+        badge: "Official Stockist",
         tagline: "High-Density Precision Calibrated Plywood Solutions",
         category: "Heavy-Duty Core Plywood"
       },
       {
-        name: "Curated Regional Mills",
-        badge: "Verified Timber",
-        tagline: "Selected High-Performance Local Plywood, Blockboards & Flush Doors",
-        category: "Kiln-Seasoned Local Timber"
+        id: "smc-plylam",
+        name: "SMC & M M Plylam",
+        badge: "Founding Firm",
+        tagline: "Udaipur’s Central Timber Depot & Architectural Consultation Atelier Since 2007",
+        category: "Udaipur Distribution Hub"
       }
     ]
   },
+
+  brands: [
+    {
+      id: "roar-commercial",
+      name: "ROAR Commercial",
+      role: "Proprietary Line",
+      category: "Wall Panels, Louvers & Commercial Surfaces",
+      tagline: "Avant-Garde Architectural Wall Styling, Acoustic Fluted Louvers & High-Traffic Surfaces",
+      heroImage: "assets/images/category_designer_doors.jpg",
+      description: "ROAR Commercial represents our specialized architectural division engineered for commercial complexes, corporate headquarters, hospitality lounges, and high-end residential interiors. Conceived to deliver uncompromising durability with striking aesthetic flair, ROAR Commercial integrates precision-extruded acoustic louvers, lightweight composite wall panels, translucent alabaster sheets, and moisture-shield acrylic accents. Every product is calibrated for rapid modular installation, superior impact resistance, and effortless maintenance in high-traffic environments.",
+      highlights: [
+        "Class-1 & Class-A fire retardant composite formulations",
+        "Acoustic noise reduction coefficient (NRC) rating up to 0.75",
+        "Concealed tongue-and-groove interlocking rapid assembly",
+        "Zero-porosity moisture and steam repellent architectural cores",
+        "10-Year commercial performance and color stability warranty"
+      ],
+      specs: [
+        { label: "Division Status", val: "ROAR Proprietary Architectural Division" },
+        { label: "Core Focus", val: "Acoustic Fluted Louvers, Wall Panels & Translucent Acrylics" },
+        { label: "Fire Resistance", val: "Class 1 / Class A Flame Spread Compliant" },
+        { label: "Acoustic Rating", val: "NRC up to 0.75 for Reverberation Control" },
+        { label: "Warranty", val: "10-Year Commercial Surface Guarantee" },
+        { label: "Applications", val: "Boardrooms, Lobbies, Theaters, Hotels & Feature Walls" }
+      ],
+      productLine: [
+        {
+          name: "ROAR Fluted Acoustic Louver Panels",
+          tag: "Acoustic & Wall Styling",
+          image: "assets/images/product_designer_fluted_door.jpg",
+          desc: "Precision-milled fluted wall louvers with concealed tongue-and-groove interlocking joints. Designed for acoustic warmth and architectural shadow lines in luxury commercial lounges and residences.",
+          specs: "Depth: 12mm – 18mm | Width: 120mm – 200mm | Length: 8ft – 10ft | Finishes: Smoked Walnut, Charcoal Oak, Brass Inlay"
+        },
+        {
+          name: "ROAR Monolithic Interior Wall Cladding",
+          tag: "Heavy-Duty Surfacing",
+          image: "assets/images/category_designer_doors.jpg",
+          desc: "Continuous large-format architectural wall panels engineered with high scratch resistance, stain repellence, and zero maintenance for high-traffic corridors and corporate reception areas.",
+          specs: "Thickness: 6mm, 8mm, 10mm | Dimensions: 8ft x 4ft, 9ft x 4ft | Scratch Resistance: > 3.5N | Anti-Bacterial Surface"
+        },
+        {
+          name: "ROAR Lumina Translucent Acrylic & Alabaster",
+          tag: "Backlit Architectural Feature",
+          image: "assets/images/architectural_estate.jpg",
+          desc: "High-translucency mineral acrylic sheets tailored for backlit luxury counters, elevator portals, bar backsplashes, and glowing ceiling soffit accents.",
+          specs: "Thickness: 6mm – 12mm | Translucency: 42% – 68% | Thermoformable for Curves | Zero Porosity"
+        },
+        {
+          name: "ROAR Exterior Weather-Shield HPL Louvers",
+          tag: "Exterior Facade System",
+          image: "assets/images/hero_timber_interior.jpg",
+          desc: "UV-stabilized exterior grade high-pressure composite louvers that withstand scorching Rajasthan sunlight, monsoon humidity, and thermal shock without fading.",
+          specs: "Core: Solid Phenolic Resin | UV Protection: Dual Double-Hardened Resin | Flame Resistance: Class 1 | 15-Year Exterior Warranty"
+        }
+      ]
+    },
+    {
+      id: "roar-decor",
+      name: "ROAR Decor",
+      role: "Proprietary Line",
+      category: "Architectural Laminates & Surfaces",
+      tagline: "High-Pressure Decorative Laminates, Zero-Fingerprint Mattes & Natural Textures",
+      heroImage: "assets/images/category_veneers_laminates.jpg",
+      description: "ROAR Decor is our premier decorative surface collection curated specifically for interior architects, millwork craftsmen, and custom cabinet ateliers. Sourced and manufactured using high-pressure resin technology, ROAR Decor offers an expansive palette of anti-fingerprint soft-touch velvet mattes, authentic synchronized woodgrains, tactile stone textures, and liquid metal inlays. Engineered to resist abrasions, boiling water, household chemicals, and UV degradation, ROAR Decor transforms mundane millwork into bespoke sculptural furniture.",
+      highlights: [
+        "Electron-beam cured ultra-matte finishes with zero fingerprint retention",
+        "Synchronized embossed pore-matched European timber textures",
+        "Stain-proof food-grade surface safe for kitchen islands and dining surfaces",
+        "High-density phenolic core backing ensuring crack resistance under CNC routing",
+        "15-Year color fastness and surface integrity guarantee"
+      ],
+      specs: [
+        { label: "Collection Status", val: "ROAR Proprietary Decorative Collection" },
+        { label: "Core Focus", val: "High-Pressure Decorative Laminates, Mattes & Textures" },
+        { label: "Sheet Thickness", val: "0.8mm, 1.0mm, 1.2mm & 12mm Compact Board" },
+        { label: "Certification", val: "IS:2046 & EN 438-2 Certified" },
+        { label: "Warranty", val: "15-Year Color Fastness & Surface Integrity" },
+        { label: "Applications", val: "Modular Kitchens, Wardrobes, Vanity Units, Wall Linings" }
+      ],
+      productLine: [
+        {
+          name: "ROAR Velvet-Touch Zero-Fingerprint Mattes",
+          tag: "Super-Matte Technology",
+          image: "assets/images/product_natural_veneers.jpg",
+          desc: "State-of-the-art electron-beam cured matte laminates with zero light reflection, anti-fingerprint coating, and microscopic thermal scratch recovery for pristine kitchen and wardrobe fronts.",
+          specs: "Thickness: 1.0mm | Gloss Level: < 5 Gloss Units | Anti-Bacterial Shield | Resistant to Boiling Water & Stains"
+        },
+        {
+          name: "ROAR Synchronized Woodgrain Architectural Laminates",
+          tag: "Deep Textured Timber",
+          image: "assets/images/category_veneers_laminates.jpg",
+          desc: "Tactile relief laminates where the physical wood texture precisely aligns with the visual grain lines. Faithfully captures raw European oak, American walnut, and rift teak.",
+          specs: "Sheet Size: 8ft x 4ft (2440 x 1220mm) | Pore-Matched Embossing | Scratch Resistance: > 1200 Cycles"
+        },
+        {
+          name: "ROAR Natural Stone & Terrazzo High-Pressure Sheets",
+          tag: "Mineral & Concrete Textures",
+          image: "assets/images/product_birch_plywood.jpg",
+          desc: "Authentic haptic reproductions of Italian travertine, honed slate, cast concrete, and Venetian terrazzo for architectural dadoes and kitchen islands.",
+          specs: "Thickness: 1.0mm & 1.2mm | Heat Resistant up to 180°C | Stain-Proof Food-Safe Surface"
+        },
+        {
+          name: "ROAR Compact High-Pressure Solid Phenolic Boards",
+          tag: "100% Waterproof Structural HPL",
+          image: "assets/images/marine_plywood_luxury.jpg",
+          desc: "Self-supporting 12mm high-density solid core boards requiring no substrate. Impervious to water, steam, and heavy impacts for luxury vanity partitions and outdoor kitchen carcasses.",
+          specs: "Thickness: 12mm Solid Core | 100% Boiling Water Proof | Density: 1400 kg/m³ | Zero Core Delamination"
+        }
+      ]
+    },
+    {
+      id: "greenply",
+      name: "Greenply",
+      role: "Official Stockist",
+      category: "IS:710 Marine & Structural Plywood",
+      tagline: "India’s Foremost Certified Structural & Marine Grade Plywood",
+      heroImage: "assets/images/marine_plywood_luxury.jpg",
+      description: "As Udaipur's premier authorized stockist for Greenply, we maintain ready local inventory of BIS-certified plywood lines. Greenply represents decades of trusted structural integrity, certified IS:710 boiling waterproof compliance, and low-VOC emissions. Backed by manufacturer warranties and certified batch testing, Greenply products delivered through our depot ensure total peace of mind for structural builders and discerning homeowners.",
+      highlights: [
+        "Certified BIS IS:710 Marine Grade with 72+ hour boiling water proof testing",
+        "Zero-emission E0 formaldehyde compliance for wholesome indoor air quality",
+        "Triple-layer anti-termite and borer chemical infusion",
+        "Direct manufacturer backed warranties up to lifetime structural coverage",
+        "Substantial ready stock in Udaipur warehouse for same-day dispatch"
+      ],
+      specs: [
+        { label: "Partnership Role", val: "Official Certified Stockist & Supply Partner" },
+        { label: "Core Focus", val: "BIS Certified IS:710 Marine & IS:303 Structural Plywood" },
+        { label: "Emission Standard", val: "E0 Compliant (Ultra Low VOC Emission)" },
+        { label: "Certification", val: "IS:710, IS:303, GreenPro Gold, CARB Phase II" },
+        { label: "Warranty", val: "Up to Lifetime / 30-Year Manufacturer Warranty" },
+        { label: "Depot Availability", val: "Ready Stock in Udaipur Warehouse for Immediate Dispatch" }
+      ],
+      productLine: [
+        {
+          name: "Green Platinum IS:710 Marine Plywood",
+          tag: "Flagship Marine Plywood",
+          image: "assets/images/category_marine_ply.jpg",
+          desc: "2X fire-retardant and boiling water proof marine plywood bonded with unextended phenolic resin. Anti-termite treated with lifelong structural assurance.",
+          specs: "Grades: IS:710 BWP | Thickness: 6mm – 25mm | Warranty: 30-Year Manufacturer Warranty | 72h+ Boiling Proof"
+        },
+        {
+          name: "Green Club 700 Structural Plywood",
+          tag: "Dual-Calibrated BWP",
+          image: "assets/images/marine_plywood_luxury.jpg",
+          desc: "Precision dual-calibrated premium structural plywood featuring zero core gaps, virgin timber veneers, and 7x boiling resistance.",
+          specs: "Grade: Premium BWP | Thickness: 9mm, 12mm, 16mm, 19mm | Uniform 0.1mm calibration"
+        },
+        {
+          name: "Green E0 Zero-Emission Calibrated Ply",
+          tag: "Health & Eco-Conscious",
+          image: "assets/images/product_birch_plywood.jpg",
+          desc: "Certified E0 ultra-low formaldehyde emitting plywood engineered for children's bedrooms, luxury penthouses, and healthcare spaces.",
+          specs: "Grade: E0 Certified | Low VOC | Non-Toxic Resins | Anti-Microbial & Anti-Viral"
+        }
+      ]
+    },
+    {
+      id: "keto-ply",
+      name: "Keto Ply",
+      role: "Official Stockist",
+      category: "Calibrated Core Timber",
+      tagline: "High-Density Precision Calibrated Plywood Solutions",
+      heroImage: "assets/images/category_commercial_ply.jpg",
+      description: "Keto Ply is engineered for precision joinery, CNC machine routing, and modular architectural cabinetry. Sourced from high-density seasoned timber cores and calibrated through 4-head automated sanding lines, Keto Ply panels provide the flat, non-warping foundation demanded by contemporary modular furniture manufacturers and interior contractors.",
+      highlights: [
+        "Quad-head automated calibration ensuring ±0.15mm uniform thickness",
+        "100% seasoned timber cores minimizing warp and deflection across spans",
+        "High screw-holding capacity exceeding 2800 N on all edge planes",
+        "Uniformly balanced veneer lay-up preventing surface undulation",
+        "Backed by 15-Year anti-borer and termite protection guarantee"
+      ],
+      specs: [
+        { label: "Partnership Role", val: "Official Stockist" },
+        { label: "Core Focus", val: "High-Density Calibrated Plywood & Core Timber" },
+        { label: "Calibration", val: "Quad-Head Sanded (±0.15mm Tolerance)" },
+        { label: "Standards", val: "IS:710 & IS:303 Precision Formats" },
+        { label: "Warranty", val: "15 to 20-Year Anti-Borer Guarantee" },
+        { label: "Applications", val: "CNC Modular Kitchens, Wardrobes, Bed Platforms & Partitioning" }
+      ],
+      productLine: [
+        {
+          name: "Keto Quad-Calibrated Heavy-Duty Core Ply",
+          tag: "Precision Calibrated",
+          image: "assets/images/plywood_macro_layers.jpg",
+          desc: "Engineered specifically for computer-numeric-control (CNC) routing machines with razor-sharp tolerances and zero surface undulations.",
+          specs: "Thickness: 12mm, 16mm, 19mm | Core: 100% Hardwood | Surface: 400-grit calibrated smoothness"
+        },
+        {
+          name: "Keto BWP 710 Water-Shield Plywood",
+          tag: "Boiling Water Proof",
+          image: "assets/images/category_waterproof_bwp.jpg",
+          desc: "Phenolic bonded moisture barrier plywood designed for continuous durability under humid tropical weather conditions and domestic wet areas.",
+          specs: "Grade: IS:710 Marine | 72-Hour Boiling Test Passed | Anti-Termite Vacuum Treatment"
+        },
+        {
+          name: "Keto Solid Timber Batten Blockboards",
+          tag: "Zero-Warp Core Battens",
+          image: "assets/images/product_blockboard.jpg",
+          desc: "Seasoned pine batten blockboards that eliminate warping in tall 8ft to 10ft sliding door shutters and heavy-load library shelving.",
+          specs: "Grade: IS:1659 Grade I | Thickness: 19mm, 25mm | Kiln-Seasoned Pine Core"
+        }
+      ]
+    },
+    {
+      id: "smc-plylam",
+      name: "SMC & M M Plylam",
+      role: "Founding Firm",
+      category: "Udaipur Distribution Hub & Atelier",
+      tagline: "Udaipur's Trusted Timber & Plywood Distribution Hub Since 2007",
+      heroImage: "assets/images/artisan_craftsmanship.jpg",
+      description: "Founded in 2007 in Udaipur, Shrinath Marketing Company (SMC) & M M Plylam represent the bedrock upon which the ROAR DOORS luxury atelier was established. Operating as the region's central timber depot, consultation center, and supply hub, we stock thousands of sheets of certified structural plywood, authentic veneers, designer laminates, and bespoke flush doors with same-day inspection and dispatch capabilities.",
+      highlights: [
+        "17+ years of continuous service to architects, designers, builders, and homeowners",
+        "Thousands of certified sheets in active local warehouse inventory",
+        "In-person sheet selection, micrometer verification, and grading inspection",
+        "Over 500+ material swatches across veneers, laminates, louvers, and cores",
+        "Dedicated logistics fleet serving Udaipur and Southern Rajasthan"
+      ],
+      specs: [
+        { label: "Founding Year", val: "2007 (17+ Years of Heritage)" },
+        { label: "Location", val: "Udaipur, Rajasthan, India" },
+        { label: "Depot Capacity", val: "Comprehensive Warehouse with Thousands of Ready Sheets" },
+        { label: "Consultation", val: "In-Person Architectural & Builder Walkthroughs" },
+        { label: "Logistics", val: "Direct Udaipur & Southern Rajasthan Dispatch Network" },
+        { label: "Clientele", val: "500+ Distinguished Architects, Designers, Builders & Homeowners" }
+      ],
+      productLine: [
+        {
+          name: "Full-Scale Timber Warehouse & Direct Inspection",
+          tag: "Distribution Depot",
+          image: "assets/images/artisan_craftsmanship.jpg",
+          desc: "Inspect full 8ft x 4ft sheets in person, check core calibrations with micrometers, verify BIS stamps, and hand-select master veneers before dispatch.",
+          specs: "Depot: Udaipur Hub | Ready Stocks: Marine Ply, Flush Doors, Decorative Panels, Hardwood Cores"
+        },
+        {
+          name: "Architectural Material Folio & Swatch Library",
+          tag: "Design Studio Concierge",
+          image: "assets/images/architectural_estate.jpg",
+          desc: "Over 500+ physical samples of laminates, fluted louvers, real veneers, and core cutouts available for architects, interior designers, and their clients.",
+          specs: "Consultation by Appointment | Custom Sample Box Delivery across Rajasthan"
+        },
+        {
+          name: "Project Volume Sourcing & Precision Cut Logistics",
+          tag: "Turnkey Commercial Supply",
+          image: "assets/images/hero_timber_interior.jpg",
+          desc: "Direct bulk procurement and tailored sizing for multi-unit residential developments, heritage hotel restorations, and commercial offices.",
+          specs: "Guaranteed Lot Consistency | Direct Mill Sourcing | On-Site Transit Insurance"
+        }
+      ]
+    }
+  ],
 
   categories: [
     {
